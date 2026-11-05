@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        Name: Shea Smith
+        Date: October 29, 2026
+        Purpose: Build a personal portfolio featuring an About section, skills list,
+        featured resources, projects, a dark mode control, and an interactive contact form.
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-control">
+        <label for="darkModeToggle">Dark Mode</label>
+        <input type="checkbox" id="darkModeToggle" aria-label="Toggle dark mode">
+    </div>
+
+    <!-- Page header and welcome message -->
+    <header>
+        <h1>SHESMI0062 Portfolio</h1>
+        <p id="welcomeMessage">Welcome to my Portfolio!</p>
+    </header>
+
+    <!-- Navigation links to the main sections -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#featured-content">Featured Content</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <!-- About section introduces the portfolio owner -->
+        <section id="about">
+            <h2>Who Is SHESMI0062?</h2>
+            <p>
+                Hello and welcome to my profile page. My name is Shea Smith, and I'm
+                currently studying software development at ECPI. I have been enjoying
+                learning new skills. My long-term goal is to use what I learn to create
+                my own game development company.
+            </p>
+            <h3>Skills and Technologies</h3>
+            <ul id="skillsList"></ul>
+        </section>
+
+        <!-- Featured Content section is displayed based on the number of projects -->
+        <section id="featured-content">
+            <h2>Featured Content</h2>
+            <div id="universityResources" class="featured-card">
+                <h3>University Resources</h3>
+                <p>Useful resources for my software development studies.</p>
+                <a href="https://www.ecpi.edu/" target="_blank" rel="noopener noreferrer">
+                    ECPI University Program Resources
+                </a>
+            </div>
+
+            <div id="personalProjects" class="featured-card">
+                <h3>Personal Projects</h3>
+                <p>Explore my programming and web development work.</p>
+                <div class="featured-project-links">
+                    <a href="https://github.com/SheSmi0062/Developing-an-Application-Menu"
+                       target="_blank" rel="noopener noreferrer">
+                        <img src="https://placehold.co/260x150/243447/ffffff?text=Python+Menu"
+                             alt="Thumbnail linking to the Python spreadsheet automation menu project">
+                        <span>Python Spreadsheet Automation Menu</span>
+                    </a>
+                    <a href="https://github.com/SheSmi0062"
+                       target="_blank" rel="noopener noreferrer">
+                        <img src="https://placehold.co/260x150/354b60/ffffff?text=GitHub+Projects"
+                             alt="Thumbnail linking to my GitHub profile and projects">
+                        <span>My GitHub Projects</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects section -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <p>Here are some projects I have worked on. Select an image to visit a project.</p>
+            <div class="projects">
+                <div class="project">
+                    <a href="https://github.com/SheSmi0062" target="_blank" rel="noopener noreferrer">
+                        <img src="https://placehold.co/250x150/243447/ffffff?text=Python+Project"
+                             alt="Thumbnail for a Python programming project">
+                    </a>
+                    <h3>Python Project</h3>
+                    <p>A project demonstrating my Python programming skills.</p>
+                </div>
+                <div class="project">
+                    <a href="https://github.com/SheSmi0062" target="_blank" rel="noopener noreferrer">
+                        <img src="https://placehold.co/250x150/354b60/ffffff?text=Web+Development"
+                             alt="Thumbnail for a web development project">
+                    </a>
+                    <h3>Web Development</h3>
+                    <p>A project demonstrating HTML, CSS, and JavaScript.</p>
+                </div>
+                <div class="project">
+                    <a href="https://github.com/SheSmi0062" target="_blank" rel="noopener noreferrer">
+                        <img src="https://placehold.co/250x150/526779/ffffff?text=Data+Analysis"
+                             alt="Thumbnail for a data analysis project">
+                    </a>
+                    <h3>Data Analysis</h3>
+                    <p>A project demonstrating data organization and charts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Use the form below to contact me.</p>
+            <form action="#" method="post" id="contactForm">
+                <label for="senderName">Sender Name:</label>
+                <input type="text" id="senderName" name="senderName"
+                       placeholder="Enter your name" required>
+
+                <label for="emailAddress">Email Address:</label>
+                <input type="email" id="emailAddress" name="emailAddress"
+                       placeholder="Enter your email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject"
+                       placeholder="Enter a subject" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5"
+                          placeholder="Write a short message here" required></textarea>
+
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+            <p id="formMessage" role="status"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SHESMI0062 | Personal Portfolio</p>
+    </footer>
+
+    <script>
+        // Ask the visitor for their name and personalize the welcome message.
+        const visitorName = prompt("Welcome! What is your name?");
+        const welcomeMessage = document.getElementById("welcomeMessage");
+
+        if (visitorName !== null && visitorName.trim() !== "") {
+            welcomeMessage.textContent = "Welcome to my portfolio, " + visitorName.trim() + "!";
+        } else {
+            welcomeMessage.textContent = "Welcome to my portfolio!";
+        }
+
+        // Use a loop to add skills to the About section as a bulleted list.
+        const skills = ["HTML", "CSS", "JavaScript", "Python", "Git", "GitHub"];
+        const skillsList = document.getElementById("skillsList");
+
+        for (let i = 0; i < skills.length; i++) {
+            const skillItem = document.createElement("li");
+            skillItem.textContent = skills[i];
+            skillsList.appendChild(skillItem);
+        }
+
+        // Count the project cards and display the appropriate Featured Content cards.
+        const projectCount = document.querySelectorAll("#projects .project").length;
+        const universityResources = document.getElementById("universityResources");
+        const personalProjects = document.getElementById("personalProjects");
+
+        if (projectCount < 3) {
+            universityResources.classList.remove("hidden");
+            personalProjects.classList.remove("hidden");
+        } else {
+            personalProjects.classList.remove("hidden");
+            universityResources.classList.add("hidden");
+        }
+
+        // Toggle dark mode when the checkbox changes.
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        darkModeToggle.addEventListener("change", function () {
+            document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+        });
+
+        // Show a personalized confirmation when the Submit button is clicked.
+        // This demo does not send an email to a server.
+        const submitButton = document.querySelector("#contactForm button[type='submit']");
+        submitButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById("senderName");
+            const name = nameInput.value.trim();
+
+            if (!name) {
+                alert("Please enter your name before submitting the form.");
+                nameInput.focus();
+                return;
+            }
+
+            alert("Thank you, " + name + ", your message has been sent!");
+            document.getElementById("formMessage").textContent =
+                "Thank you, " + name + "! This demonstration does not send an actual email.";
+        });
+    </script>
+</body>
+</html>
